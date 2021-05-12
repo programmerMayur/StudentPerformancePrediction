@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>{{ title }} Sentiment Analysis</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Welcome Student's</h1>
+		<p>1.How are you feeling today?<br>2.Describe your mood and work in day to day life?<br>
+		3.How would you like to live your life?<br>(Explain min 250 word's) 
+		</p>
+        <form method="POST">
+            <textarea name="text1" placeholder="Say Something: ...." rows="10" cols="109"></textarea><br><br>
+
+            <input class="example_a" type="submit">
+        </form>
+        {% if final %}
+        <div>
+            <h2>The Sentiment of</h2> '{{ text1 }}' <h2>is {{ final }}% positive !</h2>
+            {% else %}
+            <p></p>
+            {% endif %}
+        </div>
+        <span>by Team - MMP</span>
+    </body>
+</html>

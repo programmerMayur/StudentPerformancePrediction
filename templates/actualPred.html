@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ppicon.ico') }}">
+    <title>Student Performance Prediction</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Student Performance Prediction</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/aboutus">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact us</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+    <h1 class="text-center mt-3">Student Academic Information</h1>
+	<!--<div class="alert al">ert-warning" role="alert -->
+	<form action="/actual" method="POST">  <!--method="POST"-->
+		<div class="form-group">
+			<label for="school">School</label>
+			<select  class="form-control custom-select" id="school" name="school">
+			<option value=0>Government School</option>
+			<option value=1>Private School</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="gender">Gender</label>
+			<select  class="form-control custom-select" id="gender" name="gender">
+			<option value=0>Female</option>
+			<option value=1>Male</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="age">Age</label>
+			<input type="text" class="form-control" id="age" name="age" placeholder="E.g. 20">
+		</div>
+
+		<div class="form-group">
+			<label for="address">Living Location</label>
+			<select  class="form-control custom-select" id="address" name="address">
+			<option value=0>Rural </option>
+			<option value=1>Urban</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="famSize">Family Size</label>
+			<select  class="form-control custom-select" id="famSize" name="famSize">
+			<option value=0>Greater Than 3  </option>
+			<option value=1>Less Than 3</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="pStatus">Parent's Status</label>
+			<select  class="form-control custom-select" id="pStatus" name="pStatus">
+			<option value=0>Divorced   </option>
+			<option value=1>Toghether</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="mEdu">Mother Education</label>
+			<select  class="form-control custom-select" id="mEdu" name="mEdu">
+			<option value=0>None   </option>
+			<option value=1>Primary Education (4th grade)</option>
+			<option value=2>5th to 9th grade   </option>
+			<option value=3>Secondary Education</option>
+			<option value=4>Higher Education</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="fEdu">Father Education</label>
+			<select  class="form-control custom-select" id="fEdu" name="fEdu">
+			<option value=0>None   </option>
+			<option value=1>Primary Education (4th grade)</option>
+			<option value=2>5th to 9th grade   </option>
+			<option value=3>Secondary Education</option>
+			<option value=4>Higher Education</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="mJob">Mother Employment</label>
+			<select  class="form-control custom-select" id="mJob" name="mJob">
+			<option value=0>At Home   </option>
+			<option value=1>Health Sector</option>
+			<option value=4>Teacher/Professor   </option>
+			<option value=3>Service Sector</option>
+			<option value=2>Other   </option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="fJob">Father Employment</label>
+			<select  class="form-control custom-select" id="fJob" name="fJob">
+			<option value=0>At Home   </option>
+			<option value=1>Health Sector</option>
+			<option value=4>Teacher/Professor   </option>
+			<option value=3>Service Sector</option>
+			<option value=2>Other   </option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="rSchool">Reason for Select School</label>
+			<select  class="form-control custom-select" id="rSchool" name="rSchool">
+			<option value=0>For Special Subject   </option>
+			<option value=1>Near to Home</option>
+			<option value=3>Reputation   </option>
+			<option value=2>Other Sector</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="guardian">Guardian</label>
+			<select  class="form-control custom-select" id="guardian" name="guardian">
+			<option value=0>Father  </option>
+			<option value=1>Mother</option>
+			<option value=2>Other</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="travelTime">Travel Time for School</label>
+			<select  class="form-control custom-select" id="travelTime" name="travelTime">
+			<option value=1>less than 15 minutes  </option>
+			<option value=2>15 to 30 minutes</option>
+			<option value=3>30 to 60 minutes</option>
+			<option value=4>more than 60 minutes</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="studyTime">Daily Study Time</label>
+			<select  class="form-control custom-select" id="studyTime" name="studyTime">
+			<option value=1>less than 2 hours  </option>
+			<option value=2>2 to 5 hours</option>
+			<option value=3>5 to 10 hours</option>
+			<option value=4>more than 10 hours</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="fail">Failures in Previous Class</label>
+			<select  class="form-control custom-select" id="fail" name="fail">
+			<option value=0>0   </option>
+			<option value=1>1</option>
+			<option value=2>2</option>
+			<option value=3>3 and more</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="eClasses">Extra Classes in School</label>
+			<select  class="form-control custom-select" id="eClasses" name="eClasses">
+			<option value=0>No</option>
+			<option value=1>Yes</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="fSupport">Family Support for Education</label>
+			<select  class="form-control custom-select" id="fSupport" name="fSupport">
+			<option value=0>No</option>
+			<option value=1>Yes</option>
+			</select>
+		</div>
+	
+		<div class="form-group">
+			<label for="pCourses">Paid Course's for Subject</label>
+			<select  class="form-control custom-select" id="pCourses" name="pCourses">
+			<option value=0>No</option>
+			<option value=1>Yes</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="eClass">Extra-Curricular Activities</label>
+			<select  class="form-control custom-select" id="eClass" name="eClass">
+			<option value=0>No</option>
+			<option value=1>Yes</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="nursery">Attended Nursery School </label>
+			<select  class="form-control custom-select" id="nursery" name="nursery">
+			<option value=0>No</option>
+			<option value=1>Yes</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="hEdu">Wants to take Higher Education</label>
+			<select  class="form-control custom-select" id="hEdu" name="hEdu">
+			<option value=0>No</option>
+			<option value=1>Yes</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="internet">Internet access at home</label>
+			<select  class="form-control custom-select" id="internet" name="internet">
+			<option value=0>No</option>
+			<option value=1>Yes</option>
+			</select>
+		</div>
+	
+		<div class="form-group">
+			<label for="relationship">with a Romantic Relationship</label>
+			<select  class="form-control custom-select" id="relationship" name="relationship">
+			<option value=0>No</option>
+			<option value=1>Yes</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="fRelationship">Quality of family relationships (numeric: from '1 - Very Bad' to '5 - Excellent')</label>
+			<input type="text" class="form-control" id="fRelationship" name="fRelationship" placeholder="E.g 3">
+		</div>
+		
+		<div class="form-group">
+			<label for="fTime">free time after school (numeric: from '1 - Very Low/None' to '5 - Very High')</label>
+			<input type="text" class="form-control" id="fTime" name="fTime" placeholder="E.g 3">
+		</div>
+		
+		<div class="form-group">
+			<label for="friends">Going out with Friends (numeric: from '1 - Very Low/None' to '5 - Very High')</label>
+			<input type="text" class="form-control" id="friends" name="friends" placeholder="E.g 3">
+		</div>
+		
+		<div class="form-group">
+			<label for="alco">Workday Alcohol Consumption (numeric: from '1 - Very Low/None' to '5 - Very High')</label>
+			<input type="text" class="form-control" id="alco" name="alco" placeholder="E.g 3">
+		</div>
+
+		<div class="form-group">
+			<label for="weekAlco">Weekend Alcohol Consumption(numeric: from '1 - Very Low/None' to '5 - Very High')</label>
+			<input type="text" class="form-control" id="weekAlco" name="weekAlco" placeholder="E.g 3">
+		</div>
+		
+		<div class="form-group">
+			<label for="health">Current Health Status (numeric: from '1 - Very Bad' to '5 - Very Good')</label>
+			<input type="text" class="form-control" id="health" name="health" placeholder="E.g 3">
+		</div>
+		
+		<div class="form-group">
+			<label for="absences">Number of Absences (numeric: from 0 to 93)</label>
+			<input type="text" class="form-control" id="absences" name="absences" placeholder="E.g 3">
+		</div>
+
+		<div class="form-group">
+			<label for="firstYear">1st Year Grade (numeric: from 0 to 20)(Divide Your Percentages with 5)</label>
+			<input type="text" class="form-control" id="firstYear" name="firstYear" placeholder="(Divide Your Percentages with 5)">
+		</div>
+		
+		<div class="form-group">
+			<label for="secondYear">2ed Year Grade (numeric: from 0 to 20)</label>
+			<input type="text" class="form-control" id="secondYear" name="secondYear" placeholder="(Divide Your Percentages with 5)">
+		</div>
+		
+		<div class="form-group">
+			<label for="subject">Select Your Optional Subject</label>
+			<select  class="form-control custom-select" id="subject" name="subject">
+			<option value=0>Hindi</option>
+			<option value=1>Sanskrit</option>
+			</select>
+		</div>
+
+
+	<button class="btn btn-primary">Submit</button>
+</form>
+<!-- </div> -->
+
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
